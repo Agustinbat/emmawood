@@ -1,0 +1,49 @@
+{% extends "paginas/base.html" %} 
+
+{% block titulo %} Nosotros {% endblock %}
+
+{% block contenido %} 
+
+<div class="card">
+    <div class="card-header">
+        <a class="btn btn-success" id="" href="{% url 'crear' %}">Agregar un nuevo producto</a>
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Productos</h4>
+        <div
+            class="table-responsive"
+        >
+            <table
+                class="table table-primary"
+            >
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Producto</th>
+                        <th scope="col">Stock</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for Producto in productos %}
+                    <tr class="">
+                        <td>{{ Producto.id }}</td>
+                        <td>{{ Producto.descripcion }}</td>
+                        <td>{{ Producto.stock }}</td>
+                        <td>{{ Producto.precio }}</td>
+                        <td> 
+                            <a class="btn btn-info" href="{% url 'editar' %}" role="button">Editar</a> | 
+                            <a class="btn btn-danger" href="{% url 'eliminar' Producto.id %}" role="button">Borrar</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+   
+</div>
+
+
+{% endblock %}

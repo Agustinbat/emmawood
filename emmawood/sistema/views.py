@@ -1,7 +1,26 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-
+from django.shortcuts import render, redirect
+from .models import Producto
+from .forms import ProductoForm
 # Create your views here.
 
 def inicio(request):
-    return HttpResponse("<h1>Bienvenido developer</h1>")
+     return render(request, 'paginas/inicio.html')
+
+def productos(request):
+    productos = Producto.objects.all()
+    return render(request, 'productos/index.html', {'productos' : productos})
+
+def crear(request):
+     formulario = ProductoForm(request.POST or None, request.FILES or None)
+     if formulario.is_valid():
+          formulario.save()
+          return redirect('productos')
+     return render(request, 'productos/crear.html', {'formulario': formulario})
+
+def editar(request):
+     return render(request, 'productos/editar.html')
+
+def eliminar(request, id):
+     productos = Producto.objects.get(id=id)
+     productos.delete()
+     return redirect('productos')
