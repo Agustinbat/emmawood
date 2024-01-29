@@ -1,5 +1,1 @@
-instale django = pip3 install Django==3.2.8
 
-para correr el servidor = py manage.py runserver
-
-EmmaSofi240323#
