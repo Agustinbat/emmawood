@@ -7,7 +7,9 @@
         <input type="{{ campo.field.widget.input_type }}"
          class="form-control"
           placeholder="{{ campo.label }}"
-          name="{{ campo.name }}"/>
+          name="{{ campo.name }}"
+          value="{{ campo.value | default:'' }}"
+          />
     </div>
     <div class="col-12 help-text">{{ campo.errors }}</div>
     {% endfor %}
@@ -16,7 +18,16 @@
         id=""
         class="btn btn-success"
         type="submit"
-        value="Crear nuevo producto"
+        value="Enviar información"
     />
+    <a
+        name=""
+        id=""
+        class="btn btn-success"
+        href="{% url 'productos' %}"
+        role="button"
+        >Cancelar</a
+    >
+    
     
 </form>

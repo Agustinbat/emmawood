@@ -33,7 +33,7 @@
                         <td>{{ Producto.stock }}</td>
                         <td>{{ Producto.precio }}</td>
                         <td> 
-                            <a class="btn btn-info" href="{% url 'editar' %}" role="button">Editar</a> | 
+                            <a class="btn btn-info" href="{% url 'editar' Producto.id %}" role="button">Editar</a> | 
                             <a class="btn btn-danger" href="{% url 'eliminar' Producto.id %}" role="button">Borrar</a></td>
                     </tr>
                     {% endfor %}
